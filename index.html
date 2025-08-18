@@ -1,241 +1,163 @@
- (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
-diff --git a/index.html b/index.html
-index fda9e3011257986161bfecbfa7bad98c8c140f43..2dd42636cb977345b551780280df1dc0325af718 100644
---- a/index.html
-+++ b/index.html
-@@ -1,99 +1,145 @@
- <!DOCTYPE html>
--<html>
--<head>
--  <meta charset="utf-8">
--  <div style="position:fixed;top:0;left:0;right:0;padding:8px;text-align:center;background:#ffd;">Deployed by Eweka — Blueprint Case Study Series 🚀</div>
--  <title>2048</title>
--  <link href="style/main.css" rel="stylesheet" type="text/css">
--  <link rel="shortcut icon" href="favicon.ico">
--  <link rel="apple-touch-icon" href="meta/apple-touch-icon.png">
--  <link rel="apple-touch-startup-image" href="meta/apple-touch-startup-image-640x1096.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"> <!-- iPhone 5+ -->
--  <link rel="apple-touch-startup-image" href="meta/apple-touch-startup-image-640x920.png"  media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)"> <!-- iPhone, retina -->
--  <meta name="apple-mobile-web-app-capable" content="yes">
--  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-+<html lang="en">
-+  <head>
-+    <meta charset="utf-8" />
-+    <title>2048</title>
-+    <meta
-+      name="description"
-+      content="Join the numbers and get to the 2048 tile!"
-+    />
- 
--  <meta name="HandheldFriendly" content="True">
--  <meta name="MobileOptimized" content="320">
--  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui">
--</head>
--<body>
--  <div class="container">
--    <div class="heading">
--      <h1 class="title">2048 by Eweka Gabriel for My Blueprint Case Study Series</h1>
--      <div class="scores-container">
--        <div class="score-container">0</div>
--        <div class="best-container">0</div>
--      </div>
--    </div>
-+    <!-- Mobile settings -->
-+    <meta name="HandheldFriendly" content="True" />
-+    <meta name="MobileOptimized" content="320" />
-+    <meta
-+      name="viewport"
-+      content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui"
-+    />
-+    <meta name="apple-mobile-web-app-capable" content="yes" />
-+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
- 
--    <div class="above-game">
--      <p class="game-intro">Join the numbers and get to the <strong>2048 tile!</strong></p>
--      <a class="restart-button">New Game</a>
--    </div>
-+    <!-- Icons -->
-+    <link href="style/main.css" rel="stylesheet" type="text/css" />
-+    <link rel="shortcut icon" href="favicon.ico" />
-+    <link rel="apple-touch-icon" href="meta/apple-touch-icon.png" />
-+    <link
-+      rel="apple-touch-startup-image"
-+      href="meta/apple-touch-startup-image-640x1096.png"
-+      media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"
-+    />
-+    <link
-+      rel="apple-touch-startup-image"
-+      href="meta/apple-touch-startup-image-640x920.png"
-+      media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)"
-+    />
-+  </head>
-+  <body>
-+    <header
-+      class="deploy-banner"
-+      style="position: fixed; top: 0; left: 0; right: 0; padding: 8px; text-align: center; background: #ffd;"
-+    >
-+      Deployed by Eweka — Blueprint Case Study Series 🚀
-+    </header>
- 
--    <div class="game-container">
--      <div class="game-message">
--        <p></p>
--        <div class="lower">
--	        <a class="keep-playing-button">Keep going</a>
--          <a class="retry-button">Try again</a>
-+    <main class="container">
-+      <header class="heading">
-+        <h1 class="title">2048 by Eweka Gabriel for My Blueprint Case Study Series</h1>
-+        <div class="scores-container">
-+          <div class="score-container">0</div>
-+          <div class="best-container">0</div>
-         </div>
--      </div>
-+      </header>
- 
--      <div class="grid-container">
--        <div class="grid-row">
--          <div class="grid-cell"></div>
--          <div class="grid-cell"></div>
--          <div class="grid-cell"></div>
--          <div class="grid-cell"></div>
--        </div>
--        <div class="grid-row">
--          <div class="grid-cell"></div>
--          <div class="grid-cell"></div>
--          <div class="grid-cell"></div>
--          <div class="grid-cell"></div>
--        </div>
--        <div class="grid-row">
--          <div class="grid-cell"></div>
--          <div class="grid-cell"></div>
--          <div class="grid-cell"></div>
--          <div class="grid-cell"></div>
--        </div>
--        <div class="grid-row">
--          <div class="grid-cell"></div>
--          <div class="grid-cell"></div>
--          <div class="grid-cell"></div>
--          <div class="grid-cell"></div>
-+      <section class="above-game">
-+        <p class="game-intro">
-+          Join the numbers and get to the <strong>2048 tile!</strong>
-+        </p>
-+        <a class="restart-button">New Game</a>
-+      </section>
-+
-+      <section class="game-container">
-+        <div class="game-message">
-+          <p></p>
-+          <div class="lower">
-+            <a class="keep-playing-button">Keep going</a>
-+            <a class="retry-button">Try again</a>
-+          </div>
-         </div>
--      </div>
- 
--      <div class="tile-container">
-+        <div class="grid-container">
-+          <div class="grid-row">
-+            <div class="grid-cell"></div>
-+            <div class="grid-cell"></div>
-+            <div class="grid-cell"></div>
-+            <div class="grid-cell"></div>
-+          </div>
-+          <div class="grid-row">
-+            <div class="grid-cell"></div>
-+            <div class="grid-cell"></div>
-+            <div class="grid-cell"></div>
-+            <div class="grid-cell"></div>
-+          </div>
-+          <div class="grid-row">
-+            <div class="grid-cell"></div>
-+            <div class="grid-cell"></div>
-+            <div class="grid-cell"></div>
-+            <div class="grid-cell"></div>
-+          </div>
-+          <div class="grid-row">
-+            <div class="grid-cell"></div>
-+            <div class="grid-cell"></div>
-+            <div class="grid-cell"></div>
-+            <div class="grid-cell"></div>
-+          </div>
-+        </div>
- 
--      </div>
--    </div>
-+        <div class="tile-container"></div>
-+      </section>
- 
--    <p class="game-explanation">
--      <strong class="important">How to play:</strong> Use your <strong>arrow keys</strong> to move the tiles. When two tiles with the same number touch, they <strong>merge into one!</strong>
--    </p>
--    <hr>
--    <p>
--    <strong class="important">Note:</strong> This site is the official version of 2048. You can play it on your phone via <a href="http://git.io/2048">http://git.io/2048.</a> All other apps or sites are derivatives or fakes, and should be used with caution.
--    </p>
--    <hr>
--    <p>
--    Created by <a href="http://gabrielecirulli.com" target="_blank">Gabriele Cirulli.</a> Based on <a href="https://itunes.apple.com/us/app/1024!/id823499224" target="_blank">1024 by Veewo Studio</a> and conceptually similar to <a href="http://asherv.com/threes/" target="_blank">Threes by Asher Vollmer.</a>
--    </p>
--  </div>
-+      <section class="info">
-+        <p class="game-explanation">
-+          <strong class="important">How to play:</strong> Use your
-+          <strong>arrow keys</strong> to move the tiles. When two tiles with the
-+          same number touch, they <strong>merge into one!</strong>
-+        </p>
-+        <hr />
-+        <p>
-+          <strong class="important">Note:</strong> This site is the official
-+          version of 2048. You can play it on your phone via
-+          <a href="http://git.io/2048">http://git.io/2048.</a> All other apps
-+          or sites are derivatives or fakes, and should be used with caution.
-+        </p>
-+        <hr />
-+        <p>
-+          Created by
-+          <a href="http://gabrielecirulli.com" target="_blank"
-+            >Gabriele Cirulli.</a
-+          >
-+          Based on
-+          <a
-+            href="https://itunes.apple.com/us/app/1024!/id823499224"
-+            target="_blank"
-+            >1024 by Veewo Studio</a
-+          >
-+          and conceptually similar to
-+          <a href="http://asherv.com/threes/" target="_blank"
-+            >Threes by Asher Vollmer.</a
-+          >
-+        </p>
-+      </section>
-+    </main>
- 
--  <script src="js/bind_polyfill.js"></script>
--  <script src="js/classlist_polyfill.js"></script>
--  <script src="js/animframe_polyfill.js"></script>
--  <script src="js/keyboard_input_manager.js"></script>
--  <script src="js/html_actuator.js"></script>
--  <script src="js/grid.js"></script>
--  <script src="js/tile.js"></script>
--  <script src="js/local_storage_manager.js"></script>
--  <script src="js/game_manager.js"></script>
--  <script src="js/application.js"></script>
--</body>
-+    <!-- Scripts -->
-+    <script src="js/bind_polyfill.js" defer></script>
-+    <script src="js/classlist_polyfill.js" defer></script>
-+    <script src="js/animframe_polyfill.js" defer></script>
-+    <script src="js/keyboard_input_manager.js" defer></script>
-+    <script src="js/html_actuator.js" defer></script>
-+    <script src="js/grid.js" defer></script>
-+    <script src="js/tile.js" defer></script>
-+    <script src="js/local_storage_manager.js" defer></script>
-+    <script src="js/game_manager.js" defer></script>
-+    <script src="js/application.js" defer></script>
-+  </body>
- </html>
-+
- 
-EOF
-)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>2048 — Join the numbers!</title>
+
+  <!-- Mobile & meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="description" content="Play 2048: join matching tiles to reach 2048. Fast, modern, and mobile-friendly." />
+  <meta name="theme-color" content="#0f172a" />
+
+  <!-- Icons (optional) -->
+  <link rel="icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" href="meta/apple-touch-icon.png" />
+
+  <!-- Fonts + CSS (simple & reliable) -->
+  <link rel="stylesheet" href="fonts/clear-sans.css">
+  <link rel="stylesheet" href="style/main.css">
+</head>
+
+<body>
+  <!-- Optional deploy banner (you can remove this) -->
+  <aside aria-live="polite" aria-atomic="true"
+       style="
+         position:fixed;
+         top:0; left:0; right:0;
+         padding:8px 12px;
+         text-align:center;
+         background: var(--btn);
+         color: var(--btn-text);
+         font:600 14px var(--font-ui);
+         z-index:999;
+         box-shadow: 0 4px 12px rgba(0,0,0,.25);
+       ">
+  Deployed by CodePipeline 🚀
+</aside>
+
+
+  <div class="container">
+    <header class="heading" role="banner">
+      <h1 class="title">2048</h1>
+
+      <div class="scores-container" aria-label="Scores">
+        <div class="score-container" aria-live="polite" aria-atomic="true">0</div>
+        <div class="best-container" aria-live="polite" aria-atomic="true">0</div>
+      </div>
+    </header>
+
+    <section class="above-game">
+      <p class="game-intro">
+        Join the numbers and get to the <strong class="important">2048 tile!</strong>
+      </p>
+
+      <!-- Restart -->
+      <button class="restart-button" type="button" aria-label="Start a new game">New Game</button>
+    </section>
+
+    <main class="game-container" role="application" aria-label="2048 game board" aria-describedby="how-to-play">
+      <!-- Game overlay messages -->
+      <div class="game-message" aria-live="polite" aria-atomic="true" hidden>
+        <p></p>
+        <div class="lower">
+          <button class="keep-playing-button" type="button">Keep going</button>
+          <button class="retry-button" type="button">Try again</button>
+        </div>
+      </div>
+
+      <!-- Static 4x4 grid scaffold -->
+      <div class="grid-container" aria-hidden="true">
+        <div class="grid-row">
+          <div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div>
+        </div>
+        <div class="grid-row">
+          <div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div>
+        </div>
+        <div class="grid-row">
+          <div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div>
+        </div>
+        <div class="grid-row">
+          <div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div>
+        </div>
+      </div>
+
+      <!-- Tiles get injected here -->
+      <div class="tile-container" aria-live="polite"></div>
+    </main>
+
+    <section class="game-explanation">
+      <p id="how-to-play">
+        <strong class="important">How to play:</strong> Use your <strong>arrow keys</strong> (or swipe on mobile) to move the tiles.
+        When two tiles with the same number touch, they <strong>merge into one!</strong>
+      </p>
+      <hr />
+      <p>
+        <strong class="important">Note:</strong> This is a modernized front-end for the original 2048.
+        Learn more at
+        <a href="http://git.io/2048" target="_blank" rel="noopener noreferrer">http://git.io/2048</a>.
+      </p>
+    </section>
+
+    <footer>
+      <hr />
+      <p>
+        Created by <a href="http://gabrielecirulli.com" target="_blank" rel="noopener noreferrer">Gabriele Cirulli</a>.
+        Based on <a href="https://itunes.apple.com/us/app/1024!/id823499224" target="_blank" rel="noopener noreferrer">1024 by Veewo Studio</a>,
+        concept by <a href="http://asherv.com/threes/" target="_blank" rel="noopener noreferrer">Threes by Asher Vollmer</a>.
+      </p>
+
+      <!-- Theme toggle -->
+      <div style="margin-top:10px">
+        <button id="themeToggle" class="restart-button" type="button" aria-pressed="false" aria-label="Toggle theme">
+          Use Classic Theme
+        </button>
+      </div>
+    </footer>
+  </div>
+
+  <!-- JS (defer = non-blocking) -->
+  <script src="js/bind_polyfill.js" defer></script>
+  <script src="js/classlist_polyfill.js" defer></script>
+  <script src="js/animframe_polyfill.js" defer></script>
+  <script src="js/keyboard_input_manager.js" defer></script>
+  <script src="js/html_actuator.js" defer></script>
+  <script src="js/grid.js" defer></script>
+  <script src="js/tile.js" defer></script>
+  <script src="js/local_storage_manager.js" defer></script>
+  <script src="js/game_manager.js" defer></script>
+  <script src="js/application.js" defer></script>
+
+  <!-- Tiny helper for Theme Toggle -->
+  <script>
+    // Restore saved theme
+    (function () {
+      try {
+        const saved = localStorage.getItem('theme-2048');
+        if (saved === 'classic') document.body.classList.add('theme-classic');
+      } catch (_) {}
+    })();
+
+    // Toggle button
+    (function () {
+      const btn = document.getElementById('themeToggle');
+      if (!btn) return;
+
+      function applyLabel() {
+        const classic = document.body.classList.contains('theme-classic');
+        btn.setAttribute('aria-pressed', String(classic));
+        btn.textContent = classic ? 'Use Ocean Theme' : 'Use Classic Theme';
+      }
+      applyLabel();
+
+      btn.addEventListener('click', () => {
+        document.body.classList.toggle('theme-classic');
+        try {
+          const classic = document.body.classList.contains('theme-classic');
+          localStorage.setItem('theme-2048', classic ? 'classic' : 'ocean');
+        } catch (_) {}
+        applyLabel();
+      });
+    })();
+  </script>
+</body>
+</html>
